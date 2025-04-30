@@ -1,5 +1,6 @@
 import math
 
+
 class EcuacionSegundoGrado:
     def __init__(self, a=0, b=0, c=0):
         self._a = a
@@ -46,12 +47,16 @@ class EcuacionSegundoGrado:
             raise ValueError("c debe ser un número")
 
     def solucionESG(self):
-        return None, None
-
-    def solucionESG(self):
-        d = math.pow(self.b, 2) - 4 * self.a * self.c
+        """Calcula las soluciones de la ecuación cuadrática usando la fórmula general"""
+        d = math.pow(self.b, 2) - 4 * self.a * self.c  # Discriminante
 
         if d >= 0:
             r1 = (-self.b + math.sqrt(d)) / (2 * self.a)
             r2 = (-self.b - math.sqrt(d)) / (2 * self.a)
-            return r1, r2
+        else:
+            parteReal = -self.b / (2 * self.a)
+            parteImaginaria = math.sqrt(abs(d)) / (2 * self.a)
+            r1 = complex(parteReal, parteImaginaria)
+            r2 = complex(parteReal, -parteImaginaria)
+
+        return r1, r2
